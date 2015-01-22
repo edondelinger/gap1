@@ -20,6 +20,7 @@ var app = {
     // Application Constructor
     initialize: function() {
         this.bindEvents();
+        chargerLesPenseBetes();
     },
     // Bind Event Listeners
     //
@@ -33,7 +34,6 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-        chargerLesPenseBetes();
         app.receivedEvent('deviceready');
     },
     // Update DOM on a Received Event
@@ -46,6 +46,23 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
+    },
+    saveInCloud: function(){
+        var isonoff = navigator.onLine ? "online" : "offline";
+        if (isonoff == "online"){
+            navigator.notification.alert(
+                'Début du transfert',  // message
+                'Erreur',            // title
+                'OK'                  // buttonName
+            );
+
+        }else{
+            navigator.notification.alert(
+                'Pas de réseau pour le moment',  // message
+                'Erreur',            // title
+                'OK'                  // buttonName
+            );
+        }
     }
 };
 

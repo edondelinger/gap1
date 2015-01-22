@@ -61,6 +61,7 @@
 
                     </tbody>
                 </table>
+                <button type="button" class="button" onclick="app.saveInCloud();">Sauvegarder Cloud</button>
             </div>
 
             <div data-role="footer">
@@ -81,7 +82,7 @@
                     </div>
                     <div class="form-element">
                         <label for="libelle">Description</label>
-                        <input id="libelle" name="libelle" placeholder="required" type="text" required />
+                        <textarea rows="3" name="libelle" placeholder="required" required></textarea>
                     </div>
                     <button type="button" class="button" onclick="ajouterNote();">Ajouter</button>
                 </form>
@@ -93,7 +94,7 @@
             </div>
         </div>
 
-
+<!--
         <div class="app">
             <h1>PhoneGap</h1>
             <div id="deviceready" class="blink">
@@ -101,7 +102,7 @@
                 <p class="event received">Device is Ready</p>
             </div>
         </div>
-
+-->
 
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
