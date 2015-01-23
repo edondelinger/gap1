@@ -50,13 +50,35 @@ var app = {
     saveInCloud: function(){
         var isonoff = navigator.onLine ? "online" : "offline";
         if (isonoff == "online"){
+
             navigator.notification.alert(
                 'Début du transfert',  // message
                 'Erreur',            // title
                 'OK'                  // buttonName
             );
 
+
+            $("#message").empty();
+            $("#message").html("Traitement en cours ...");
+            for (var i = 0; i < lesEcheances.length; i++) {
+                var url = "http://192.168.1.24/tests/index.php?tache=" + lesTaches[i] + "&echeance=" + lesEcheances[i] + "&effectue=" + lesEffectuees[i];
+
+                // Log
+                console.log("Request string: " + url);
+
+                // Call to web server
+                $.get(url, function (data) {
+
+                        // Log received content
+                        console.log("Received string: " + data);
+
+                    }
+                );
+            }
+            $("#message").html("Traitement effectué");
+
         }else{
+
             navigator.notification.alert(
                 'Pas de réseau pour le moment',  // message
                 'Erreur',            // title
@@ -153,3 +175,4 @@ function chargerLesPenseBetes(){
         alert("localStorage n'est pas supporté");
     }
 }
+
